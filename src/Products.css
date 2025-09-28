@@ -1,0 +1,19 @@
+.product-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-list li {
+    background: #c91e1e;
+    margin-bottom: 12px;
+    padding: 16px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.product-list li:hover {
+    background: #e6f7ff;
+}
