@@ -1,5 +1,6 @@
-import React, { useEffect, useState,useContext } from "react";
-import { StoreContext,useAppContext } from "./store";
+import React, { useEffect, useState, } from "react";
+import { useAppContext } from "./store";
+import StarRating from "./StarRating";
 import './Products.css';
 
 export const Products = () => {
@@ -19,7 +20,7 @@ export const Products = () => {
                 }
             });
         }else{
-            setProduct([...product,{name:item.title,quantity: 1}]);
+            setProduct([...product,{name:item.title,quantity: 1, price:item.price, id:item.id}]);
         }
         setTotalItems(totalItems + 1);
         setTotalPrice(totalPrice + item.price);
@@ -54,6 +55,8 @@ export const Products = () => {
                                     <div><img height="200px" width="150px" src={item.images} ></img></div>
                                     <div>{item.title}</div>
                                     <div>Price :- ${item.price}</div>
+                                    <div style={{fontStyle:"italic",fontSize:"15px",marginTop:"20px",marginBottom:"20px"}}>"{item.description}"</div>
+                                    <StarRating rating={item.rating} />
                                     <div><button  onClick={()=>handleAddToCart(item)}>Add To Cart</button></div>
                                 </div>
                             </li>

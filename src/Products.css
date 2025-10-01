@@ -21,7 +21,7 @@
 }
 
 .product-list li:hover {
-    background: #be5408;
+    background: #6a5546;
 }
 
 button{
@@ -36,4 +36,8 @@ button{
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
+}
+
+.checked {
+  color: rgb(255, 217, 0);
 }

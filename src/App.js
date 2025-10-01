@@ -51,7 +51,9 @@ console.log(showCart)
             <h2
               style={{
                 color: "GrayText",
-                marginLeft: "50%",
+                display:"flex",
+                width: "80pc",
+                marginLeft: "45%",
                 marginRight: "0%",
               }}
             >
