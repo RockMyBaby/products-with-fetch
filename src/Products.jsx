@@ -1,10 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
+import { StoreContext,useAppContext } from "./store";
 import './Products.css';
 
 export const Products = () => {
     const [loading, setLoading] = useState(true);
     const [products,setProducts] = useState([]);
     console.log(products)
+    const {totalPrice, totalItems, product,setProduct,setTotalPrice,setTotalItems} = useAppContext();
+    console.log(totalPrice,totalItems,product)
+
+    const handleAddToCart = (item) => {
+        console.log(item);
+        if(product.some((prod)=>prod.name===item.title)){
+            product.forEach(element => {
+                if(element.name===item.title){
+                    element.quantity = element.quantity ? element.quantity + 1 : 2;
+                    setProduct([...product,] )
+                }
+            });
+        }else{
+            setProduct([...product,{name:item.title,quantity: 1}]);
+        }
+        setTotalItems(totalItems + 1);
+        setTotalPrice(totalPrice + item.price);
+    }
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -30,7 +49,14 @@ export const Products = () => {
                 <div>Loading...</div> : (<div>
                     <ul className="product-list">
                         {products.map((item)=>{
-                           return <li key={item.id}>{item.title}</li>
+                           return <li key={item.id}>
+                                <div className="product-card">
+                                    <div><img height="200px" width="150px" src={item.images} ></img></div>
+                                    <div>{item.title}</div>
+                                    <div>Price :- ${item.price}</div>
+                                    <div><button  onClick={()=>handleAddToCart(item)}>Add To Cart</button></div>
+                                </div>
+                            </li>
                         })}
                     </ul>
                 </div>)}
