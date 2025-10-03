@@ -1,5 +1,5 @@
-import React, { useEffect, useState, } from "react";
-import { useAppContext } from "./store";
+import React, { useContext, useEffect, useState, } from "react";
+import { storeContext } from "../context/store";
 import StarRating from "./StarRating";
 import './Products.css';
 
@@ -7,7 +7,7 @@ export const Products = () => {
     const [loading, setLoading] = useState(true);
     const [products,setProducts] = useState([]);
     console.log(products)
-    const {totalPrice, totalItems, product,setProduct,setTotalPrice,setTotalItems} = useAppContext();
+    const {totalPrice, totalItems, product,setProduct,setTotalPrice,setTotalItems} = useContext(storeContext);
     console.log(totalPrice,totalItems,product)
 
     const handleAddToCart = (item) => {
@@ -56,7 +56,9 @@ export const Products = () => {
                                     <div>{item.title}</div>
                                     <div>Price :- ${item.price}</div>
                                     <div style={{fontStyle:"italic",fontSize:"15px",marginTop:"20px",marginBottom:"20px"}}>"{item.description}"</div>
+                                    <p title={`${item.rating}`}>
                                     <StarRating rating={item.rating} />
+                                    </p>
                                     <div><button  onClick={()=>handleAddToCart(item)}>Add To Cart</button></div>
                                 </div>
                             </li>

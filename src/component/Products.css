@@ -38,6 +38,12 @@ button{
     border-radius: 12px;
 }
 
+button:hover{
+    background-color: #555555; /* Green */
+    color: white;
+    border: 2px solid #ff0000;
+}
+
 .checked {
   color: rgb(255, 217, 0);
 }

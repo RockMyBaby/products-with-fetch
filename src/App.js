@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import "./App.css";
-import { Products } from "./Products";
-import Cart from "./Cart";
-import storeContext from "./store";
+import { Products } from "./component/Products";
+import Cart from "./component/Cart";
+import {storeContext} from "./context/store";
 
 function App() {
   const [product, setProduct] = useState([]);
@@ -32,16 +32,18 @@ function App() {
   }
 console.log(showCart)
   return (
+    <div>
     <storeContext.Provider value={contextValue}>
       <div className="App">
         <header className="App-header">
           <div
             style={{
               display: "flex",
+              position: "fixed",
               justifyContent: "space-between",
               marginBottom: "12px",
               width: "100%",
-              height: "4pc",
+              height: "3pc",
               alignItems: "center",
               backgroundColor: "lightgrey",
               padding: "10px",
@@ -61,12 +63,13 @@ console.log(showCart)
             </h2>
             <button style={{ marginRight: "10pc" }} onClick={handleShowCart}>Cart</button>
           </div>
-          <div>
+          <div style={{ marginTop: "6pc" }}>
             {showCart ? <Cart /> : <Products />}
           </div>
         </header>
       </div>
     </storeContext.Provider>
+    </div>
   );
 }
 

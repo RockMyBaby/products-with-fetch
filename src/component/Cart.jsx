@@ -1,5 +1,5 @@
-import React from "react";
-import { useAppContext } from "./store";
+import React, { useContext } from "react";
+import { storeContext } from "../context/store";
 import "./Products.css";
 import "./Cart.css";
 const Cart = () => {
@@ -10,7 +10,7 @@ const Cart = () => {
     setProduct,
     setTotalPrice,
     setTotalItems,
-  } = useAppContext();
+  } = useContext(storeContext);
   console.log("ff", product);
 
   const handleIncrement = (item) => {
@@ -43,7 +43,7 @@ const Cart = () => {
   return (
     <div>
       <h2>Your Cart</h2>
-      {totalPrice === 0 ? (
+      {totalItems === 0 ? (
         <div>Your cart is empty</div>
       ) : (
         <div className="cart-container">
